@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<!-- 스크립트 전까지 document 객체 트리에 저장 -->
+<script>
+	window.addEventListener("load", function(){
+		//dom접근해서 input객제찾기
+		var inputObj = document.querySelector("input");
+		//해당객체의 value프로퍼티값 얻기
+		var value = inputObj.value;
+		console.log("첫번째 input객체의 value프로퍼티값 : " + value);
+		
+		//dom에 접근해서 button객체찾기
+		var buttonObj = document.querySelector("button");
+		console.log(buttonObj);
+		
+		//버튼객체에서 click이벤트가 발생할 것을 감지
+		//클릭되면 1)임의의 숫자를 발생하는 가위바위보값과 
+		//		2)사용자가 입력해준 가위바위보값을 비교해서
+		//		3)승패를 출력한다.
+		buttonObj.addEventListener("click", function(){
+			//alert("Clicked!")
+			//1)
+			//var com;
+		
+		var type=["가위","바위","보"];
+		var computerNum = parseInt(Math.random()*3 + 1);
+		var computerType = type[computerNum-1];
+		
+		
+		/*	var a = parseInt(Math.random()*3 + 1);
+			switch(a){
+				case 1: console.log("가위");
+					break;
+				case 2: console.log("바위");
+					break;
+				case 3: console.log("보");
+					break;
+			}*/
+
+			//2)querySeclectorAll(): 모든 input객체를 찾기, 배열반환
+		var arr = document.querySelectorAll("input");
+		for(var i=0; i<arr.length; i++){
+			var rObj = arr[i];
+			if(rObj.checked){ //체크되어있는지 확인 체크되어잇으면 true 안되어있으면 false
+				
+				 break;
+				
+				/*if(rObj.value ==1){
+					console.log("가위");
+				}else if(rObj.value == 2){
+					console.log("바위");
+				}else if(rObj.value ==3){
+					console.log("보");
+				}
+					//console.log(rObj.value +"사용자"); //1->가위 2->바위 3->보
+				break;*/
+			}
+		}
+		
+		
+		if(i == arr,length){
+			alert("가위 바위 보를 선택하세요");
+		}else{
+			var userNum = parseInt(arr[i].value);
+			var userType = type[userNum-1];
+			var msg = "기계 : " + computerType + "  사용자 : " + userType;
+			msg += "\n";
+			if(userNum == computerNum){
+				msg += "무승부";
+			}else if(userNum - (computerNum%3) == 1){
+				msg += "이겼습니다."
+			}else{
+				msg += "졌습니다."
+			}
+			alert(msg);
+			
+		
+		
+		
+			//3)승패를 출력
+			/*
+			if((a-rObj.value) == -1){
+				console.log("사용자 승");
+				alert("승!");
+			}else if((a-rObj.value) == -2){
+				console.log("사용자 패");
+				alert("패!");
+			}else if(a == rObj.value){
+				console.log("무승부");
+				alert("무승부!");
+			}else if((a-rObj.value) == 2){
+				console.log("사용자 승");
+				alert("승!");
+			}else if((a-rObj.value) == 1){
+				console.log("사용자 패");
+				alert("패!");
+			}
+			console.log("****************");
+			*/
+		}
+		});
+	});
+</script>
+</head>
+<body>
+
+<input type="radio" name="r" value="1">가위
+<input type="radio" name="r" value="2">바위
+<input type="radio" name="r" value="3">보
+<button>실행</button>
+
+
+
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script>
+var a;
+a=1;
+
+b=2; //var없이 선언할 수 있다.
+console.log(a + "," +b);
+console.log(window.a + ","+window.b);
+
+var c = function(){
+	var lv=3; //var을 같이 쓰면 함수내에서만 쓰인다. 함수가 끝나면 메모리가 삭제된다.
+	d=4; //var없이 선언하면 밖에서도 쓸수있다. 함수 안이 아닌 window객체에서 선언이 된다.
+	console.log("in function : a+b=" + (a+b));//3
+	console.log("in function : d=" + d); //4
+	console.log("in function : " + lv); //3
+	var e = function(){
+		var lv2 = 5;
+		f=6;
+		console.log("in inner function : lv + lv2=" + (lv+lv2));//8
+	};
+	e();
+	console.log("in function: f=" + f);//6
+}
+c();
+//console.log("out function : " + lv); //Uncaught ReferenceError: lv is not defined
+console.log("out function : d=" + window.d);//4
+console.log("out function : f=" + window.f);//6
+
+</script>
+
+</head>
+<body>
+
+</body>
+</html>

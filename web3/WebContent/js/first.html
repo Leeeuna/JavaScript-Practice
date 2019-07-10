@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>js/first.html</title>
+
+<script>
+//alert("A");
+//alert(typeof(123)); 
+console.log(typeof(123)); //검사->console에 결과가 나타남
+console.log(typeof('hello')); //"hello와 같음", String
+console.log(typeof(true)); //Boolean타입
+console.log(typeof({})); //object
+console.log(typeof(function(){})); //function
+
+//변수선언 - 선언시 자료형이 결정되지 않는다. 대입되는 값에 따라서 자료형이 결정된다.
+var v1; 
+v1 = 123; //number타입이 된다.
+v1 = 'hello'; //String 타입으로 바뀐다.
+v1 = false; //자료형이 그때그때 바뀐다.
+v1 = {};
+v1 = function(){};
+console.log(typeof(v1)); //function
+
+var v2;
+console.log(typeof(v2)); //값이 부여가 안되면 undefined
+
+//ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+//연산자
+//산술연산자
+console.log(1+2); //3
+console.log(1/2); //0.5
+console.log(5%3); //2
+console.log(1/0); //Infinity
+
+//비교연산자
+console.log(1>2); //Boolean값으로 나옴 false
+console.log(1==2); //false
+console.log(1!=2); //false
+
+//논리연산자
+console.log(1>2 &&  5%3==2) //false
+console.log(1>2 ||  5%3==2); //true
+
+//대입연산자
+var v3;
+v3 = 1+2;
+v3 += 3; //v3 = v3+3\
+console.log(v3); //6
+
+//단항연산자
+var v4;
+v4 = v3++;
+console.log(v3 +"," + v4); //7,6
+
+//삼항연산자
+var v5 = v4>6? true:false;
+console.log(v5); //false
+
+//ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+//자료형변환
+var num=1;
+var str='2';
+var bool=true;
+console.log(num+str); // '12' 문자열타입이 우선된다. 더하기 연산시 number가 string으로 자동형변환된다. 
+console.log(num-str); //-1 연산자에 따라서 자료형이 바뀐다. 빼기 연산시 string이 number로 자동형변환된다.
+console.log(num+bool); //2 산술연산시 boolean이 number로 자동형변환된다.
+console.log(str+bool); // '2true'
+
+var un; //undefind
+console.log(num+un); //NAN
+
+//ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+//조건문
+if(num%2==0){
+	console.log("짝수");
+}else{
+	console.log("홀수");
+}
+
+//현재날짜얻기
+var now = new Date();
+console.log(now.getFullYear());
+
+var month = now.getMonth();
+console.log(month); //6  month는 0부터1월이 시작되기때문에 7월은 6으로 나옴
+
+//Math.floor(month/6); //ex : month가 1인 경우 month/6은 0.0 (버림)
+//Math.ceil(month/6); //ex : month가 1인 경우 month/6은 1.0 (올림)
+switch(Math.floor(month/6)){
+case 0:	console.log("상반기");
+		break;
+default: console.log("하반기")
+}
+
+//ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+//반복문
+//정수로 강제형변환 : parseInt()
+//console.log(parseInt(Math.random()));
+//가위바위보게임
+//가위:1
+//바위:2
+//보:3
+
+/*for(var i=0; i<5; i++){
+	var a = parseInt(Math.random()*3 + 1);
+	switch(a){
+		case 1: console.log("가위");
+			break;
+		case 2: console.log("바위");
+			break;
+		case 3: console.log("보");
+			break;
+	}
+}*/
+
+var i=0;
+while(i<5){
+	var a = parseInt(Math.random()*3 + 1);
+	switch(a){
+		case 1: console.log("가위");
+			break;
+		case 2: console.log("바위");
+			break;
+		case 3: console.log("보");
+			break;
+	}
+	i++;
+}
+
+</script>
+
+</head>
+<body>
+
+<script>
+//alert("B"); //경고창
+</script>
+
+<button>클릭</button>
+
+<script>
+//alert("C");
+</script>
+
+</body>
+</html>
