@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>js/propagation.html</title>
+<script>
+//기본 이벤트핸들러 - 클릭하지않아도 보여지는것
+//이벤트 전달 : 하위 -> 상위
+window.addEventListener("load", function(){
+	var aObj = document.querySelector("div>a");
+	aObj.addEventListener("click", function(event){
+		event.preventDefault();//기본이벤트핸들러 막기
+		event.stopPropagation();//이벤트 전달 중지
+	});
+	
+	var divObj = document.querySelector("div");
+	divObj.addEventListener("click",function(){ //하위요소에서 발생한 이벤트는 상위요소로 전달이 된다.
+		//this : 이벤트가 발생된 객체, divObj객체를 말한다.
+		this.style.width='500px';
+		this.style.backgroundColor = "pink";  //주의!!!! -를 인식하지 못하기 때문에 c를 C로 써주어야한다.
+	});
+});
+</script>
+</head>
+<body>
+<div style="width:300px;background-color:yellow;">
+  <a href="http://www.naver.com" style="border: 1px solid;">네이버</a>
+</div>
+</body>
+</html>
