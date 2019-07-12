@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>가입</title>
+<style>
+input[type=submit]{
+display:none;
+} 
+</style>
+
+<script>
+window.addEventListener("load", function(){
+	
+	var divObj = document.querySelector("#id");
+	var Arr = document.querySelectorAll("input");
+	var btObj1 = document.querySelector("#dupchkid");
+	btObj1.addEventListener("click", function(){
+		for(var i=0; i<Arr.length; i++){
+			var idObj = Arr[i];
+			if(idObj.value == "test"){
+				alert("이미 사용중인 ID입니다.");
+				break;
+			}else{
+				alert("사용 가능한 ID입니다.");
+				break;
+			}
+		}
+		for(var i=0; i<arr.length; i++){
+			(function(j){
+			  var idObj = Arr[i];	
+			  var submitObj = document.querySelector("submit");
+			  var resetObj = document.querySelector("reset");		
+				submitObj.addEventListener("change", function(){		
+					var sibling = resetObj.nextElementSibling;
+					if(idObj.value != "test"){
+						sibling.style.display = 'block';
+					}else{
+						sibling.style.display = 'none';
+					}
+				});
+			  
+			})(i);
+		} 
+	});
+});
+</script>
+
+</head>
+<body>
+<div id="id">
+<h2>아이디 입력</h2>
+<input type="text" name="t" placeholder="아이디를 입력하세요.">
+<button id ="dupchkid">중복확인</button>
+</div>
+<div id="pw">
+<h2>비밀번호</h2>
+<input type="password" name="p" placeholder="사용할 비밀번호를 입력하세요.">
+</div>
+<div id="pw2">
+<h2>비밀번호 확인</h2>
+<input type="password" name="p2" placeholder="사용할 비밀번호를 입력하세요."><br>
+</div>
+<div>
+<h2>주소</h2>
+<input type="text" name="ad1" readonly>-<input type="text" name="ad2" readonly>
+<button id="searchZip">우편번호검색</button><br>
+<input type="text" name="ad3" readonly><br>
+<input type="text" name="ad4" placeholder="상세주소 입력하세요.">
+</div>
+<div>
+<input type="reset" value="취소">
+<input type="submit" value="가입완료">
+</div>
+</body>
+</html>

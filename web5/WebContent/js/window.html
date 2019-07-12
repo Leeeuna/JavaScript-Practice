@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>js/window.html</title>
+
+<script>
+//DOM트리가 구성될 때까지 기다린다: window객체의 load이벤트감시
+window.addEventListener("load", function(){
+	var windowId;
+	var btObj1 = document.querySelector("button:nth-child(1)");//생성자로 구분해줘야한다.
+	btObj1.addEventListener("click",function(){
+		var url = 'http://localhost:8080';
+		var name='one'; //똑같은창이 여러개 안뜨도록 이름을 설정해준다.
+		var spec = 'width=200px,height=200px';
+		windowId = window.open(url,name,spec);//새창띄우기
+	});
+	var btObj2 = document.querySelector("button:nth-child(2)"); //이렇게 쳐도 첫번째 버튼 객체만 반환한다. 구분할수 있어야한다.
+	btObj2.addEventListener("click",function(){
+		windowId.close();
+	});
+	
+	//3번째버튼이 클릭되었을 때
+	var btObj3 = document.querySelector("button:nth-child(3)"); 
+	var intervalId;
+	btObj3.addEventListener("click",function(){
+		var time=1000; //1초
+		//dom에서 div객체찾기
+		var divObj = document.querySelector("div");
+		intervalId = window.setInterval(function(){
+			//console.log(new Date());
+			var now = new Date();
+			var y = now.getFullYear();
+			var m= now.getMonth();
+			var d = now.getDate();
+			var h = now.getHours();
+			var mi = now.getMinutes();
+			var ss = now.getSeconds();
+			//div객체.innerHTML = 현재값
+			divObj.innerHTML = y+"년" + (m+1)+"월" + d +"일 " + h+":"+mi+":"+ss;
+		}, time);//인자로 전달하는 함수를 callback함수라고 한다.
+	});
+	
+	var btObj4 = document.querySelector("button:nth-child(4)"); 
+	btObj4.addEventListener("click",function(){
+		window.clearInterval(intervalId);
+	});
+	
+	var btObj5 = document.querySelector("button:nth-child(5)"); 
+	btObj5.addEventListener("click",function(){
+		var time = 1000*10;
+		//window.setTimeout(function(){
+			setTimeout(function(){
+			alert("버튼클릭후 10초가 지났습니다.");
+		}, time);
+	});
+	
+	
+});
+</script>	
+
+</head>
+<body>
+<button>새창띄우기</button>
+<button>새창닫기</button>
+<button>타이머간격처리(setInterval)</button>
+<button>타이머간격중지</button>
+<button>타이머실행(setTimeout)</button>
+<div></div>
+</body>
+</html>
