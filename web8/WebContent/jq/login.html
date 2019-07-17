@@ -1,0 +1,52 @@
+
+<html>
+<head>
+<meta charset="UTF-8">
+<script>
+$(function(){
+	$("button[type=button]").click(function(){
+		
+		//alert("가입버튼이 클릭되었습니다");
+		//menu중 가입메뉴객체를 찾기
+		var $menuArr = $("header > nav > ul > li > a");
+		for(var i=0; i<$menuArr.length; i++){
+			var aObj = $menuArr[i];
+			if($(aObj).attr('href') == 'join.html'){
+				//alert($(aObj).html()); //가입
+				
+				//click이벤트 강제발생시키기
+				$(aObj).trigger('click');
+				break;
+			}
+		}
+	});
+	
+	/*	$("button[type=submit]").click(function(){//1
+		alert("submit버튼에서 click 이벤트 발생");	
+ 		$("form").attr('action', '../a.jsp');
+		$("form").submit(); 
+		return false; 
+		//기본이벤트 핸들러가 할일 : form의 submit이벤트를 강제 발생시킨다.
+	});*/
+	
+	$("form").submit(function(){//2
+		alert("form 에서 submit이벤트 발생");	
+		$("form").attr('action', '../a.jsp');
+		//기본이벤트 핸들러가 할 일: form의 action 속성값에 해당하는 URL을 요청한다.
+							//action속성값이 없으면 지금 사용중인 URL을 요청한다.
+		//return false;
+	});
+
+	
+});
+</script>
+</head>
+<body>
+<form>
+ID : <input type="text" name="id" placeholder="아이디를 입력하세요" required><br>
+비밀번호:<input type="password" name="pwd" placeholder="비밀번호를 입력하세요" required><br>
+<button type="submit">로그인</button>
+<button type="button">가입</button>
+</form>
+</body>
+</html>
